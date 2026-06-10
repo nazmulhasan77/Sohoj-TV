@@ -1,46 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sohoj TV live IPTV player">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="sohojtv">
+  <meta name="apple-mobile-web-app-title" content="Sohoj TV">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>sohojtv</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <title>Sohoj TV</title>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">S</span>
+        <div>
+          <h1>Sohoj TV</h1>
+          <p>Live channels</p>
+        </div>
+      </div>
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js" async></script>
+      <label class="search-box">
+        <span>Search</span>
+        <input id="searchInput" type="search" placeholder="Channel name..." autocomplete="off">
+      </label>
+
+      <div class="filter-header">
+        <span>Categories</span>
+        <button id="clearFilters" type="button">Clear</button>
+      </div>
+      <div id="categoryList" class="category-list"></div>
+    </aside>
+
+    <main class="content">
+      <section class="player-section">
+        <div class="player-wrap">
+          <video id="videoPlayer" controls playsinline poster="icons/Icon-512.png"></video>
+          <div id="playerMessage" class="player-message">
+            <strong>Select a channel</strong>
+            <span>Choose any live channel from the list.</span>
+          </div>
+        </div>
+
+        <div class="now-playing">
+          <div class="now-logo" id="nowLogo">TV</div>
+          <div class="now-copy">
+            <p id="nowGroup">Ready</p>
+            <h2 id="nowName">Sohoj TV Live</h2>
+            <span id="nowUrl">No stream selected</span>
+          </div>
+          <div class="player-actions">
+            <button id="favoriteCurrent" type="button" title="Favorite">☆</button>
+            <button id="copyUrl" type="button">Copy URL</button>
+            <a id="openUrl" href="#" target="_blank" rel="noreferrer">Open</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <div>
+          <p id="channelCount">Loading channels...</p>
+          <h3>All Live Channels</h3>
+        </div>
+        <select id="sortSelect" aria-label="Sort channels">
+          <option value="az">A to Z</option>
+          <option value="za">Z to A</option>
+          <option value="favorites">Favorites first</option>
+        </select>
+      </section>
+
+      <section id="channelGrid" class="channel-grid"></section>
+      <div id="emptyState" class="empty-state" hidden>No channel found.</div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="app.js"></script>
 </body>
 </html>

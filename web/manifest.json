@@ -1,11 +1,11 @@
 {
-    "name": "sohojtv",
-    "short_name": "sohojtv",
+    "name": "Sohoj TV",
+    "short_name": "Sohoj TV",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#090b10",
+    "theme_color": "#13c58a",
+    "description": "Sohoj TV live IPTV player.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
