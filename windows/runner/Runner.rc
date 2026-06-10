@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "sohojtv" "\0"
+            VALUE "CompanyName", "Butterfly Devs" "\0"
+            VALUE "FileDescription", "Sohoj TV" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "sohojtv" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
+            VALUE "InternalName", "Sohoj TV" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Butterfly Devs. All rights reserved." "\0"
             VALUE "OriginalFilename", "sohojtv.exe" "\0"
-            VALUE "ProductName", "sohojtv" "\0"
+            VALUE "ProductName", "Sohoj TV" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

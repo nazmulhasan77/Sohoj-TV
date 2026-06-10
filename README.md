@@ -1,6 +1,8 @@
 # Sohoj TV
 
-Sohoj TV is a static live TV website that loads channels from `web/sohoj-tv-api.json` and plays HLS streams with `hls.js`.
+Sohoj TV is a static live TV website by Butterfly Devs. It loads channels from `web/sohoj-tv-api.json` and plays HLS streams with `hls.js`.
+
+Brand assets live in `assets/`; `assets/sohoj tv logo.jpg` is mirrored into `web/assets/sohoj-tv-logo.jpg` for the web build.
 
 ## Run
 

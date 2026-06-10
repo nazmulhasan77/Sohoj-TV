@@ -4,8 +4,8 @@
     "start_url": ".",
     "display": "standalone",
     "background_color": "#090b10",
-    "theme_color": "#13c58a",
-    "description": "Sohoj TV live IPTV player.",
+    "theme_color": "#0b5cff",
+    "description": "Sohoj TV live IPTV player by Butterfly Devs.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

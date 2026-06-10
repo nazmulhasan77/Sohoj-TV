@@ -4,26 +4,38 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sohoj TV live IPTV player">
+  <meta name="description" content="Sohoj TV live IPTV player by Butterfly Devs">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Sohoj TV">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="manifest" href="manifest.json">
+  <script>
+    const savedTheme = localStorage.getItem('sohoj-tv-theme');
+    const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches;
+    document.documentElement.dataset.theme = savedTheme || (prefersLight ? 'light' : 'dark');
+  </script>
   <link rel="stylesheet" href="styles.css">
   <title>Sohoj TV</title>
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <div class="brand">
-        <span class="brand-mark">S</span>
-        <div>
-          <h1>Sohoj TV</h1>
-          <p>Live channels</p>
+      <div class="sidebar-top">
+        <div class="brand">
+          <img class="brand-mark" src="assets/sohoj-tv-logo.jpg" alt="Sohoj TV logo">
+          <div>
+            <h1>Sohoj TV</h1>
+            <p>By Butterfly Devs</p>
+          </div>
         </div>
+        <button id="themeToggle" class="icon-btn" type="button" title="Toggle theme" aria-label="Toggle theme">☾</button>
       </div>
+
+      <a class="promotion" href="https://www.facebook.com/butterflydevs" target="_blank" rel="noreferrer">
+        <img src="assets/promotion.png" alt="Butterfly Devs">
+      </a>
 
       <label class="search-box">
         <span>Search</span>
@@ -40,7 +52,7 @@
     <main class="content">
       <section class="player-section">
         <div class="player-wrap">
-          <video id="videoPlayer" controls playsinline poster="icons/Icon-512.png"></video>
+          <video id="videoPlayer" controls playsinline preload="metadata" poster="assets/sohoj-tv-logo.jpg"></video>
           <div id="playerMessage" class="player-message">
             <strong>Select a channel</strong>
             <span>Choose any live channel from the list.</span>
@@ -52,26 +64,39 @@
           <div class="now-copy">
             <p id="nowGroup">Ready</p>
             <h2 id="nowName">Sohoj TV Live</h2>
-            <span id="nowUrl">No stream selected</span>
+            <span class="stream-status">Live stream plays on this page</span>
           </div>
           <div class="player-actions">
             <button id="favoriteCurrent" type="button" title="Favorite">☆</button>
-            <button id="copyUrl" type="button">Copy URL</button>
-            <a id="openUrl" href="#" target="_blank" rel="noreferrer">Open</a>
+            <button id="retryStream" type="button">Retry Stream</button>
           </div>
+          <label class="quality-control">
+            <span>Quality</span>
+            <select id="qualitySelect" disabled>
+              <option value="auto">Auto</option>
+            </select>
+          </label>
         </div>
       </section>
 
       <section class="toolbar">
         <div>
           <p id="channelCount">Loading channels...</p>
-          <h3>All Live Channels</h3>
+          <h3 id="channelHeading">Live Channels</h3>
         </div>
-        <select id="sortSelect" aria-label="Sort channels">
-          <option value="az">A to Z</option>
-          <option value="za">Z to A</option>
-          <option value="favorites">Favorites first</option>
-        </select>
+        <div class="toolbar-controls">
+          <select id="resolutionSelect" aria-label="Filter by resolution">
+            <option value="all">All resolutions</option>
+            <option value="1080">1080p</option>
+            <option value="720">720p</option>
+            <option value="480">480p</option>
+          </select>
+          <select id="sortSelect" aria-label="Sort channels">
+            <option value="az">A to Z</option>
+            <option value="za">Z to A</option>
+            <option value="favorites">Favorites first</option>
+          </select>
+        </div>
       </section>
 
       <section id="channelGrid" class="channel-grid"></section>
